@@ -1,0 +1,2232 @@
+#N canvas 8 211 784 596 10;
+#X obj -438 -234 tgl 15 0 men empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#N canvas 279 264 450 300 liga_desliga 0;
+#X obj 53 180 gemwin;
+#X msg 53 141 create \, 1;
+#X msg 124 141 destroy \, 0;
+#X obj 53 107 select 1 0;
+#X obj 53 80 inlet;
+#X obj -45 89 tgl 15 0 empty empty empty 0 -6 0 10 -262144 -1 -1 0
+1;
+#X msg -44 107 fullscreen \$1;
+#X msg -137 108 dimen 1024 768;
+#X obj 144 -53 gemmouse;
+#X floatatom 182 17 2 0 0 1 middle-Button - -;
+#X obj -85 56 loadbang;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 3 1 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 6 0;
+#X connect 6 0 0 0;
+#X connect 7 0 0 0;
+#X connect 8 3 9 0;
+#X connect 9 0 2 0;
+#X connect 10 0 7 0;
+#X restore -438 -212 pd liga_desliga;
+#N canvas 655 272 1024 666 interface_videos 0;
+#N canvas 4 74 1278 914 arduino 0;
+#X obj 319 191 cnv 15 100 22 empty empty empty 20 12 0 14 -253938 -66577
+0;
+#X obj 151 151 cnv 15 60 22 empty empty empty 20 12 0 14 -253938 -66577
+0;
+#X msg 157 153 open 4;
+#N canvas 128 22 525 433 serin 0;
+#X obj 180 61 cnv 15 15 15 empty \$0-number-canvas 4 4 8 0 14 -233017
+-1 0;
+#X obj 200 225 s \$0-number-canvas;
+#X obj 60 61 hradio 15 1 1 8 empty empty empty 0 -6 0 8 -225271 -1
+-1 4;
+#X obj 60 13 inlet;
+#X msg 200 202 label \$1;
+#X obj 200 180 makefilename %d;
+#X obj 59 108 int;
+#X msg 59 206 open \$1;
+#X obj 59 377 outlet;
+#X msg 201 306 set \$1 \$2;
+#X obj 59 266 trigger bang anything;
+#X obj 201 286 list;
+#X obj 383 383 outlet;
+#X obj 384 22 netreceive 34567;
+#X obj 477 43 tgl 15 0 empty empty empty 0 -6 0 10 -262144 -1 -1 0
+1;
+#X obj 384 41 bng 15 250 50 0 empty empty empty 0 -6 0 10 -262144 -1
+-1;
+#X obj 187 24 delay 15000;
+#X text 345 379 close;
+#X text 209 4 for open/close automation in Makefile;
+#N canvas 698 22 318 215 reset 0;
+#X obj 65 24 inlet;
+#X obj 66 58 bang;
+#X obj 66 150 send ARDUINO_TEST_RESET;
+#X msg 66 129 0;
+#X msg 111 99 1;
+#X obj 111 120 send ARDUINO_PINMODE_RESET;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 5 0;
+#X restore 172 111 pd reset guis;
+#X connect 2 0 6 0;
+#X connect 2 0 19 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 5 0 4 0;
+#X connect 6 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 10 0;
+#X connect 9 0 8 0;
+#X connect 10 0 8 0;
+#X connect 10 1 11 0;
+#X connect 11 0 9 0;
+#X connect 13 0 15 0;
+#X connect 13 1 14 0;
+#X connect 15 0 16 0;
+#X connect 15 0 12 0;
+#X connect 16 0 2 0;
+#X coords 0 -1 1 1 136 17 1 60 60;
+#X restore 157 130 pd serin;
+#X text 154 112 serial port #;
+#X msg 217 153 close;
+#X obj 331 537 tgl 15 1 empty empty empty 0 -6 0 8 -225271 -1 -1 1
+1;
+#X msg 443 240 analogIns 15 1;
+#N canvas 1012 716 773 421 serin 0;
+#X obj 59 337 outlet;
+#X obj 59 266 trigger bang anything;
+#X obj 201 286 list;
+#X obj 60 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 0 5 9 1
+12 -262130 -1 -1 1 1;
+#X obj 75 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 1 5 9 1
+12 -262130 -1 -1 1 1;
+#X obj 90 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 2 5 9 1
+12 -262130 -1 -1 1 1;
+#X obj 105 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 3 5 9
+1 12 -262130 -1 -1 1 1;
+#X obj 120 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 4 5 9
+1 12 -262130 -1 -1 1 1;
+#X obj 135 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 5 5 9
+1 12 -262130 -1 -1 1 1;
+#X obj 150 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 6 5 9
+1 12 -262130 -1 -1 1 1;
+#X msg 59 210 analogIns \$1 \$2;
+#X msg 14 130 0 \$1;
+#X msg 49 130 1 \$1;
+#X msg 84 130 2 \$1;
+#X msg 119 130 3 \$1;
+#X msg 154 130 4 \$1;
+#X msg 189 130 5 \$1;
+#X msg 224 130 6 \$1;
+#X msg 260 130 7 \$1;
+#X msg 202 307 set \$1 \$2 \$3;
+#X obj 165 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 7 5 9
+1 12 -262130 -1 -1 1 1;
+#X obj 180 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 8 5 9
+1 12 -262130 -1 -1 1 1;
+#X obj 195 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 9 5 9
+1 12 -262130 -1 -1 1 1;
+#X obj 210 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 10 2 9
+1 11 -262130 -1 -1 1 1;
+#X obj 225 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 11 2 9
+1 11 -262130 -1 -1 1 1;
+#X obj 255 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 13 2 9
+1 11 -262130 -1 -1 1 1;
+#X obj 270 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 14 2 9
+1 11 -262130 -1 -1 1 1;
+#X obj 285 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 15 2 9
+1 11 -262130 -1 -1 1 1;
+#X msg 338 129 9 \$1;
+#X msg 298 130 8 \$1;
+#X msg 377 129 10 \$1;
+#X msg 423 129 11 \$1;
+#X msg 605 130 15 \$1;
+#X msg 559 130 14 \$1;
+#X msg 513 130 13 \$1;
+#X msg 468 129 12 \$1;
+#X obj 240 61 tgl 15 0 junk_to_hide_inlet ARDUINO_TEST_RESET 12 2 9
+1 11 -262130 -1 -1 1 1;
+#X connect 1 0 0 0;
+#X connect 1 1 2 0;
+#X connect 2 0 19 0;
+#X connect 3 0 11 0;
+#X connect 4 0 12 0;
+#X connect 5 0 13 0;
+#X connect 6 0 14 0;
+#X connect 7 0 15 0;
+#X connect 8 0 16 0;
+#X connect 9 0 17 0;
+#X connect 10 0 1 0;
+#X connect 11 0 10 0;
+#X connect 12 0 10 0;
+#X connect 13 0 10 0;
+#X connect 14 0 10 0;
+#X connect 15 0 10 0;
+#X connect 16 0 10 0;
+#X connect 17 0 10 0;
+#X connect 18 0 10 0;
+#X connect 19 0 0 0;
+#X connect 20 0 18 0;
+#X connect 21 0 29 0;
+#X connect 22 0 28 0;
+#X connect 23 0 30 0;
+#X connect 24 0 31 0;
+#X connect 25 0 34 0;
+#X connect 26 0 33 0;
+#X connect 27 0 32 0;
+#X connect 28 0 10 0;
+#X connect 29 0 10 0;
+#X connect 30 0 10 0;
+#X connect 31 0 10 0;
+#X connect 32 0 10 0;
+#X connect 33 0 10 0;
+#X connect 34 0 10 0;
+#X connect 35 0 10 0;
+#X connect 36 0 35 0;
+#X coords 0 -1 1 1 240 16 1 60 60;
+#X restore 443 220 pd serin;
+#X msg 325 230 info;
+#X msg 364 230 version;
+#X obj 284 537 spigot;
+#X msg 325 193 pinMode 23 0;
+#N canvas 67 22 475 478 sending 0;
+#X obj 69 228 cnv 15 100 22 empty empty empty 20 12 0 14 -253938 -66577
+0;
+#X obj 78 434 outlet;
+#X msg 78 231 digital 22 0;
+#X obj 127 148 tgl 15 0 empty empty 7 4 -6 1 12 -233017 -1 -1 0 1;
+#X obj 144 148 tgl 15 0 empty empty 8 4 -6 1 12 -233017 -1 -1 0 1;
+#X obj 161 148 tgl 15 0 empty empty 9 4 -6 1 12 -233017 -1 -1 0 1;
+#X obj 178 148 tgl 15 0 empty empty 10 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 195 148 tgl 15 0 empty empty 11 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 212 148 tgl 15 0 empty empty 12 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 229 148 tgl 15 0 empty empty 13 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 42 148 tgl 15 0 empty empty 2 4 -6 1 12 -233017 -1 -1 0 1;
+#X obj 59 148 tgl 15 0 empty empty 3 4 -6 1 12 -233017 -1 -1 0 1;
+#X obj 76 148 tgl 15 0 empty empty 4 4 -6 1 12 -233017 -1 -1 0 1;
+#X obj 93 148 tgl 15 0 empty empty 5 4 -6 1 12 -233017 -1 -1 0 1;
+#X obj 110 148 tgl 15 0 empty empty 6 4 -6 1 12 -233017 -1 -1 0 1;
+#X obj 418 123 tgl 25 0 empty ARDUINO_TEST_RESET ALL 2 12 0 12 -262144
+-1 -1 0 1;
+#X obj 388 72 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0 16383
+;
+#X obj 388 92 metro 100;
+#X obj 301 9 inlet;
+#X obj 8 148 tgl 15 0 empty empty 0 3 -6 1 12 -260818 -1 -1 0 1;
+#X obj 25 148 tgl 15 0 empty empty 1 3 -6 1 12 -260818 -1 -1 0 1;
+#X obj 8 148 cnv 15 15 15 empty empty Rx 1 10 0 11 -128992 -86277 0
+;
+#X obj 25 148 cnv 15 15 15 empty empty Tx 1 10 0 11 -128992 -13381
+0;
+#X obj 301 43 trigger 0 float;
+#X obj 301 64 select 0;
+#X msg 301 84 0;
+#X msg 405 389 port 1 0;
+#X msg 263 389 port 0 0;
+#X msg 189 389 port 0 255;
+#X msg 331 389 port 1 255;
+#X text 95 291 or send 8-bit ports in one message:;
+#X msg 159 338 port 1 \$1;
+#X msg 91 338 port 0 \$1;
+#X msg 230 338 port 2 \$1;
+#X obj 362 297 tgl 25 0 empty ARDUINO_TEST_RESET ALL 2 12 0 12 -262144
+-1 -1 0 255;
+#X obj 362 246 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+16383;
+#X obj 362 266 metro 100;
+#X floatatom 362 329 5 0 0 0 - - -;
+#X obj 246 148 tgl 15 0 empty empty 14 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 263 148 tgl 15 0 empty empty 15 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 280 148 tgl 15 0 empty empty 16 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 297 148 tgl 15 0 empty empty 17 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 314 148 tgl 15 0 empty empty 18 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 331 148 tgl 15 0 empty empty 19 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 348 148 tgl 15 0 empty empty 20 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 365 148 tgl 15 0 empty empty 21 0 -6 1 12 -233017 -1 -1 0 1
+;
+#N canvas 338 476 1035 340 generate 0;
+#X obj 12 24 inlet;
+#X obj 52 24 inlet;
+#X obj 91 24 inlet;
+#X obj 131 24 inlet;
+#X obj 171 24 inlet;
+#X obj 211 24 inlet;
+#X obj 250 24 inlet;
+#X obj 290 24 inlet;
+#X obj 331 23 inlet;
+#X obj 371 23 inlet;
+#X obj 410 23 inlet;
+#X obj 450 23 inlet;
+#X obj 490 23 inlet;
+#X msg 12 66 digital 0 \$1;
+#X msg 52 88 digital 1 \$1;
+#X msg 91 110 digital 2 \$1;
+#X msg 131 130 digital 3 \$1;
+#X msg 171 62 digital 4 \$1;
+#X msg 211 84 digital 5 \$1;
+#X msg 250 106 digital 6 \$1;
+#X msg 290 126 digital 7 \$1;
+#X msg 331 58 digital 8 \$1;
+#X msg 371 80 digital 9 \$1;
+#X msg 410 102 digital 10 \$1;
+#X msg 450 122 digital 11 \$1;
+#X msg 490 50 digital 12 \$1;
+#X obj 529 23 inlet;
+#X msg 529 70 digital 13 \$1;
+#X obj 513 302 outlet;
+#X obj 513 263 trigger bang anything;
+#X obj 513 214 list prepend set;
+#X obj 513 238 list trim;
+#X obj 570 23 inlet;
+#X obj 610 23 inlet;
+#X obj 650 23 inlet;
+#X obj 689 23 inlet;
+#X msg 570 102 digital 14 \$1;
+#X msg 610 122 digital 15 \$1;
+#X msg 650 50 digital 16 \$1;
+#X msg 689 70 digital 17 \$1;
+#X obj 730 23 inlet;
+#X obj 770 23 inlet;
+#X obj 810 23 inlet;
+#X obj 849 23 inlet;
+#X msg 730 102 digital 18 \$1;
+#X msg 770 122 digital 19 \$1;
+#X msg 810 50 digital 20 \$1;
+#X msg 849 70 digital 21 \$1;
+#X obj 890 23 inlet;
+#X obj 930 23 inlet;
+#X msg 890 102 digital 22 \$1;
+#X msg 930 122 digital 23 \$1;
+#X connect 0 0 13 0;
+#X connect 1 0 14 0;
+#X connect 2 0 15 0;
+#X connect 3 0 16 0;
+#X connect 4 0 17 0;
+#X connect 5 0 18 0;
+#X connect 6 0 19 0;
+#X connect 7 0 20 0;
+#X connect 8 0 21 0;
+#X connect 9 0 22 0;
+#X connect 10 0 23 0;
+#X connect 11 0 24 0;
+#X connect 12 0 25 0;
+#X connect 13 0 30 0;
+#X connect 14 0 30 0;
+#X connect 15 0 30 0;
+#X connect 16 0 30 0;
+#X connect 17 0 30 0;
+#X connect 18 0 30 0;
+#X connect 19 0 30 0;
+#X connect 20 0 30 0;
+#X connect 21 0 30 0;
+#X connect 22 0 30 0;
+#X connect 23 0 30 0;
+#X connect 24 0 30 0;
+#X connect 25 0 30 0;
+#X connect 26 0 27 0;
+#X connect 27 0 30 0;
+#X connect 29 0 28 0;
+#X connect 29 1 28 0;
+#X connect 30 0 31 0;
+#X connect 31 0 29 0;
+#X connect 32 0 36 0;
+#X connect 33 0 37 0;
+#X connect 34 0 38 0;
+#X connect 35 0 39 0;
+#X connect 36 0 30 0;
+#X connect 37 0 30 0;
+#X connect 38 0 30 0;
+#X connect 39 0 30 0;
+#X connect 40 0 44 0;
+#X connect 41 0 45 0;
+#X connect 42 0 46 0;
+#X connect 43 0 47 0;
+#X connect 44 0 30 0;
+#X connect 45 0 30 0;
+#X connect 46 0 30 0;
+#X connect 47 0 30 0;
+#X connect 48 0 50 0;
+#X connect 49 0 51 0;
+#X connect 50 0 30 0;
+#X connect 51 0 30 0;
+#X restore 78 201 pd generate digital out messages ------------------
+;
+#X obj 382 148 tgl 15 0 empty empty 22 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X obj 399 148 tgl 15 0 empty empty 23 0 -6 1 12 -233017 -1 -1 0 1
+;
+#X connect 2 0 1 0;
+#X connect 3 0 46 7;
+#X connect 4 0 46 8;
+#X connect 5 0 46 9;
+#X connect 6 0 46 10;
+#X connect 7 0 46 11;
+#X connect 8 0 46 12;
+#X connect 9 0 46 13;
+#X connect 10 0 46 2;
+#X connect 11 0 46 3;
+#X connect 12 0 46 4;
+#X connect 13 0 46 5;
+#X connect 14 0 46 6;
+#X connect 15 0 9 0;
+#X connect 15 0 8 0;
+#X connect 15 0 7 0;
+#X connect 15 0 6 0;
+#X connect 15 0 5 0;
+#X connect 15 0 4 0;
+#X connect 15 0 3 0;
+#X connect 15 0 14 0;
+#X connect 15 0 13 0;
+#X connect 15 0 12 0;
+#X connect 15 0 11 0;
+#X connect 15 0 10 0;
+#X connect 15 0 43 0;
+#X connect 15 0 44 0;
+#X connect 15 0 45 0;
+#X connect 15 0 42 0;
+#X connect 15 0 41 0;
+#X connect 15 0 40 0;
+#X connect 15 0 39 0;
+#X connect 15 0 38 0;
+#X connect 15 0 48 0;
+#X connect 15 0 47 0;
+#X connect 16 0 17 0;
+#X connect 17 0 15 0;
+#X connect 18 0 23 0;
+#X connect 23 0 24 0;
+#X connect 23 1 16 0;
+#X connect 24 0 25 0;
+#X connect 25 0 15 0;
+#X connect 26 0 1 0;
+#X connect 27 0 1 0;
+#X connect 28 0 1 0;
+#X connect 29 0 1 0;
+#X connect 31 0 1 0;
+#X connect 32 0 1 0;
+#X connect 33 0 1 0;
+#X connect 34 0 37 0;
+#X connect 34 0 33 0;
+#X connect 34 0 31 0;
+#X connect 34 0 32 0;
+#X connect 35 0 36 0;
+#X connect 36 0 34 0;
+#X connect 38 0 46 14;
+#X connect 39 0 46 15;
+#X connect 40 0 46 16;
+#X connect 41 0 46 17;
+#X connect 42 0 46 18;
+#X connect 43 0 46 19;
+#X connect 44 0 46 20;
+#X connect 45 0 46 21;
+#X connect 46 0 2 0;
+#X connect 47 0 46 22;
+#X connect 48 0 46 23;
+#X restore 20 319 pd sending digital outs;
+#X obj 20 300 tgl 15 0 empty empty empty 0 -6 0 8 -225271 -1 -1 0 16383
+;
+#X text 38 299 pulse all outputs;
+#X obj 284 559 route analog;
+#N canvas 978 22 499 396 display 0;
+#X obj 6 7 inlet;
+#X obj 6 28 mapping/resample 100;
+#X obj 6 50 outlet;
+#X obj 54 50 inlet;
+#X obj 54 71 mapping/resample 100;
+#X obj 54 93 outlet;
+#X obj 103 93 inlet;
+#X obj 103 114 mapping/resample 100;
+#X obj 103 136 outlet;
+#X obj 151 136 inlet;
+#X obj 151 157 mapping/resample 100;
+#X obj 151 179 outlet;
+#X obj 200 179 inlet;
+#X obj 200 200 mapping/resample 100;
+#X obj 200 222 outlet;
+#X obj 247 222 inlet;
+#X obj 247 243 mapping/resample 100;
+#X obj 247 265 outlet;
+#X obj 295 265 inlet;
+#X obj 295 286 mapping/resample 100;
+#X obj 295 308 outlet;
+#X obj 345 308 inlet;
+#X obj 345 329 mapping/resample 100;
+#X obj 345 351 outlet;
+#X obj 60 290 receive ARDUINO_TEST_RESET;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 24 0 22 0;
+#X connect 24 0 19 0;
+#X connect 24 0 16 0;
+#X connect 24 0 13 0;
+#X connect 24 0 10 0;
+#X connect 24 0 7 0;
+#X connect 24 0 4 0;
+#X connect 24 0 1 0;
+#X restore 213 616 pd display values without pegging the CPU;
+#X text 967 165 (C) Copyright 2006 Free Software Foundation;
+#N canvas 0 22 451 224 ver 0;
+#X obj 23 7 inlet;
+#X obj 250 100 cnv 15 145 17 empty \$0-version_cnv Firmata-2.2 4 10
+0 12 -203904 -1 0;
+#X obj 23 157 send \$0-version_cnv;
+#X msg 23 132 label \$1;
+#X obj 48 103 symbol;
+#X obj 38 77 loadbang;
+#X msg 96 78 bang;
+#X obj 309 163 outlet;
+#X obj 23 52 zexy/makesymbol Firmata-%s.%s;
+#X obj 23 29 route version bang;
+#X connect 0 0 9 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 8 0 3 0;
+#X connect 9 0 8 0;
+#X connect 9 1 7 0;
+#X connect 9 1 6 0;
+#X connect 9 2 7 0;
+#X coords 0 -1 1 1 145 17 1 250 100;
+#X restore 455 407 pd ver;
+#X text 442 203 which analogIns to enable:;
+#X obj 284 507 arduino 1;
+#N canvas 649 518 411 212 firmware 0;
+#X obj 123 2 inlet;
+#X obj 250 100 cnv 15 145 17 empty \$0-firmware_cnv StandardFirmata-2.2
+4 10 0 12 -232576 -66577 0;
+#X msg 123 156 label \$1;
+#X obj 148 127 symbol;
+#X obj 138 101 loadbang;
+#X msg 196 102 bang;
+#X obj 123 181 send \$0-firmware_cnv;
+#X obj 123 24 route firmware;
+#X obj 18 181 print Firmware;
+#X obj 123 49 list;
+#X obj 123 80 zexy/makesymbol %s-%s.%s;
+#X obj 18 151 list trim;
+#X obj 204 45 route bang;
+#X connect 0 0 7 0;
+#X connect 2 0 6 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 0;
+#X connect 7 0 9 0;
+#X connect 7 1 12 0;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 10 0 11 0;
+#X connect 11 0 8 0;
+#X connect 12 0 5 0;
+#X coords 0 -1 1 1 145 17 1 250 100;
+#X restore 455 427 pd firmware;
+#X msg 364 270 devices;
+#X msg 364 250 firmware;
+#X text 965 185 released under the GNU GPL v2 or later;
+#N canvas 623 75 404 287 device 0;
+#X obj 35 60 inlet;
+#X obj 35 118 route open port ports;
+#X obj 35 169 tgl 15 0 empty empty open -3 20 0 10 -262144 -1 -1 0
+1;
+#X floatatom 76 170 5 0 0 3 port - -;
+#X obj 117 170 print comport_ports;
+#X obj 252 170 outlet;
+#X obj 235 74 receive ARDUINO_TEST_RESET;
+#X obj 235 97 bang;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 1 2 4 0;
+#X connect 1 3 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 5 0;
+#X restore 455 385 pd device info;
+#X text 547 385 <- open to see info;
+#X text 377 88 turn on output mode for each pin:;
+#N canvas 395 421 446 317 pinMode 0;
+#X obj 92 267 outlet;
+#X obj 122 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+2 2 -8 0 10 -261682 -1 -1 0;
+#X obj 132 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+3 2 -8 0 10 -261682 -1 -1 0;
+#X obj 142 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+4 2 -8 0 10 -261682 -1 -1 0;
+#X obj 152 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+5 2 -8 0 10 -261682 -1 -1 0;
+#X obj 162 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+6 2 -8 0 10 -261682 -1 -1 0;
+#X obj 172 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+7 2 -8 0 10 -261682 -1 -1 0;
+#X obj 182 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+8 2 -8 0 10 -261682 -1 -1 0;
+#X obj 192 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+9 2 -8 0 10 -261682 -1 -1 0;
+#X obj 202 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+10 0 -8 0 8 -261682 -1 -1 0;
+#X obj 212 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+11 0 -8 0 8 -261682 -1 -1 0;
+#X obj 222 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+12 0 -8 0 8 -261682 -1 -1 0;
+#X obj 232 100 vradio 10 1 0 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+13 0 -8 0 8 -261682 -1 -1 0;
+#X obj 242 100 vradio 10 1 1 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+14 0 -8 0 8 -261682 -1 -1 1;
+#X obj 252 100 vradio 10 1 1 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+15 0 -8 0 8 -261682 -1 -1 1;
+#X obj 262 100 vradio 10 1 1 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+16 0 -8 0 8 -261682 -1 -1 1;
+#X obj 272 100 vradio 10 1 1 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+17 0 -8 0 8 -261682 -1 -1 1;
+#X obj 282 100 vradio 10 1 1 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+18 0 -8 0 8 -261682 -1 -1 0;
+#X obj 292 100 vradio 10 1 1 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+19 0 -8 0 8 -261682 -1 -1 0;
+#X obj 302 100 vradio 10 1 1 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+20 0 -8 0 8 -261682 -1 -1 0;
+#X obj 312 100 vradio 10 1 1 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+21 0 -8 0 8 -261682 -1 -1 0;
+#N canvas 59 587 1064 355 send-to-arduino---------------------- 0;
+#X obj 49 24 inlet;
+#X obj 89 24 inlet;
+#X obj 128 24 inlet;
+#X obj 168 24 inlet;
+#X obj 208 24 inlet;
+#X obj 248 24 inlet;
+#X obj 287 24 inlet;
+#X obj 327 24 inlet;
+#X obj 368 23 inlet;
+#X obj 408 23 inlet;
+#X obj 447 23 inlet;
+#X obj 487 23 inlet;
+#X obj 527 23 inlet;
+#X msg 49 66 pinMode 0 \$1;
+#X msg 89 88 pinMode 1 \$1;
+#X msg 128 110 pinMode 2 \$1;
+#X msg 168 130 pinMode 3 \$1;
+#X msg 208 62 pinMode 4 \$1;
+#X msg 248 84 pinMode 5 \$1;
+#X msg 287 106 pinMode 6 \$1;
+#X msg 327 126 pinMode 7 \$1;
+#X msg 368 58 pinMode 8 \$1;
+#X msg 408 80 pinMode 9 \$1;
+#X msg 447 102 pinMode 10 \$1;
+#X msg 487 122 pinMode 11 \$1;
+#X msg 527 50 pinMode 12 \$1;
+#X obj 566 23 inlet;
+#X msg 566 70 pinMode 13 \$1;
+#X obj 481 295 outlet;
+#X obj 481 256 trigger bang anything;
+#X obj 481 209 list prepend set;
+#X obj 481 233 list trim;
+#X obj 607 23 inlet;
+#X obj 647 23 inlet;
+#X obj 687 23 inlet;
+#X obj 726 23 inlet;
+#X obj 767 23 inlet;
+#X obj 807 23 inlet;
+#X obj 847 23 inlet;
+#X obj 886 23 inlet;
+#X msg 607 102 pinMode 14 \$1;
+#X msg 647 122 pinMode 15 \$1;
+#X msg 687 50 pinMode 16 \$1;
+#X msg 726 70 pinMode 17 \$1;
+#X msg 767 102 pinMode 18 \$1;
+#X msg 807 122 pinMode 19 \$1;
+#X msg 847 50 pinMode 20 \$1;
+#X msg 886 70 pinMode 21 \$1;
+#X obj 927 23 inlet;
+#X obj 967 23 inlet;
+#X msg 927 102 pinMode 22 \$1;
+#X msg 967 122 pinMode 23 \$1;
+#X connect 0 0 13 0;
+#X connect 1 0 14 0;
+#X connect 2 0 15 0;
+#X connect 3 0 16 0;
+#X connect 4 0 17 0;
+#X connect 5 0 18 0;
+#X connect 6 0 19 0;
+#X connect 7 0 20 0;
+#X connect 8 0 21 0;
+#X connect 9 0 22 0;
+#X connect 10 0 23 0;
+#X connect 11 0 24 0;
+#X connect 12 0 25 0;
+#X connect 13 0 30 0;
+#X connect 14 0 30 0;
+#X connect 15 0 30 0;
+#X connect 16 0 30 0;
+#X connect 17 0 30 0;
+#X connect 18 0 30 0;
+#X connect 19 0 30 0;
+#X connect 20 0 30 0;
+#X connect 21 0 30 0;
+#X connect 22 0 30 0;
+#X connect 23 0 30 0;
+#X connect 24 0 30 0;
+#X connect 25 0 30 0;
+#X connect 26 0 27 0;
+#X connect 27 0 30 0;
+#X connect 29 0 28 0;
+#X connect 29 1 28 0;
+#X connect 30 0 31 0;
+#X connect 31 0 29 0;
+#X connect 32 0 40 0;
+#X connect 33 0 41 0;
+#X connect 34 0 42 0;
+#X connect 35 0 43 0;
+#X connect 36 0 44 0;
+#X connect 37 0 45 0;
+#X connect 38 0 46 0;
+#X connect 39 0 47 0;
+#X connect 40 0 30 0;
+#X connect 41 0 30 0;
+#X connect 42 0 30 0;
+#X connect 43 0 30 0;
+#X connect 44 0 30 0;
+#X connect 45 0 30 0;
+#X connect 46 0 30 0;
+#X connect 47 0 30 0;
+#X connect 48 0 50 0;
+#X connect 49 0 51 0;
+#X connect 50 0 30 0;
+#X connect 51 0 30 0;
+#X restore 94 179 pd send-to-arduino----------------------;
+#X obj 322 100 vradio 10 1 1 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+22 0 -8 0 8 -261682 -1 -1 0;
+#X obj 332 100 vradio 10 1 1 5 THIS_HIDES_THE_OUTLET THIS_HIDES_THE_INLET
+23 0 -8 0 8 -261682 -1 -1 0;
+#X obj 100 100 cnv 10 10 50 empty empty Rx 0 23 0 10 -191407 -86277
+0;
+#X obj 111 100 cnv 10 10 50 empty empty Tx 0 23 0 10 -191407 -13381
+0;
+#X connect 1 0 21 2;
+#X connect 2 0 21 3;
+#X connect 3 0 21 4;
+#X connect 4 0 21 5;
+#X connect 5 0 21 6;
+#X connect 6 0 21 7;
+#X connect 7 0 21 8;
+#X connect 8 0 21 9;
+#X connect 9 0 21 10;
+#X connect 10 0 21 11;
+#X connect 11 0 21 12;
+#X connect 12 0 21 13;
+#X connect 13 0 21 14;
+#X connect 14 0 21 15;
+#X connect 15 0 21 16;
+#X connect 16 0 21 17;
+#X connect 17 0 21 18;
+#X connect 18 0 21 19;
+#X connect 19 0 21 20;
+#X connect 20 0 21 21;
+#X connect 21 0 0 0;
+#X connect 22 0 21 22;
+#X connect 23 0 21 23;
+#X coords 0 -1 1 1 242 50 2 100 100;
+#X restore 325 135 pd pinMode;
+#X text 582 170 servo;
+#X text 582 160 pwm;
+#X text 582 141 output;
+#X text 582 151 analog;
+#X obj 284 579 route 0 1 2 3 4 5 6 7;
+#X obj 774 593 route 8 9 10 11 12 13 14 15;
+#N canvas 780 110 499 396 display 0;
+#X obj 6 7 inlet;
+#X obj 6 28 mapping/resample 100;
+#X obj 6 50 outlet;
+#X obj 54 50 inlet;
+#X obj 54 71 mapping/resample 100;
+#X obj 54 93 outlet;
+#X obj 103 93 inlet;
+#X obj 103 114 mapping/resample 100;
+#X obj 103 136 outlet;
+#X obj 151 136 inlet;
+#X obj 151 157 mapping/resample 100;
+#X obj 151 179 outlet;
+#X obj 200 179 inlet;
+#X obj 200 200 mapping/resample 100;
+#X obj 200 222 outlet;
+#X obj 247 222 inlet;
+#X obj 247 243 mapping/resample 100;
+#X obj 247 265 outlet;
+#X obj 295 265 inlet;
+#X obj 295 286 mapping/resample 100;
+#X obj 295 308 outlet;
+#X obj 345 308 inlet;
+#X obj 345 329 mapping/resample 100;
+#X obj 345 351 outlet;
+#X obj 60 290 receive ARDUINO_TEST_RESET;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 24 0 22 0;
+#X connect 24 0 19 0;
+#X connect 24 0 16 0;
+#X connect 24 0 13 0;
+#X connect 24 0 10 0;
+#X connect 24 0 7 0;
+#X connect 24 0 4 0;
+#X connect 24 0 1 0;
+#X restore 724 634 pd display values without pegging the CPU;
+#X text 582 132 input;
+#X obj 39 813 change;
+#X obj 39 788 < 0.9;
+#X obj 39 837 s sensor1;
+#X obj 66 764 r sen1;
+#X obj 109 813 change;
+#X obj 109 788 < 0.9;
+#X obj 179 813 change;
+#X obj 179 788 < 0.9;
+#X obj 249 813 change;
+#X obj 249 788 < 0.9;
+#X obj 319 813 change;
+#X obj 319 788 < 0.9;
+#X obj 399 813 change;
+#X obj 399 788 < 0.9;
+#X obj 483 813 change;
+#X obj 483 788 < 0.9;
+#X obj 136 764 r sen2;
+#X obj 206 764 r sen3;
+#X obj 276 764 r sen4;
+#X obj 109 837 s sensor2;
+#X obj 179 837 s sensor3;
+#X obj 249 837 s sensor4;
+#X obj 319 837 s sensor5;
+#X obj 399 837 s sensor6;
+#X obj 483 837 s sensor7;
+#X obj 346 764 r sen5;
+#X obj 426 764 r sen6;
+#X obj 510 764 r sen7;
+#X obj 555 813 change;
+#X obj 555 788 < 0.9;
+#X obj 635 811 change;
+#X obj 635 786 < 0.9;
+#X obj 705 811 change;
+#X obj 705 786 < 0.9;
+#X obj 775 811 change;
+#X obj 775 786 < 0.9;
+#X obj 845 811 change;
+#X obj 845 786 < 0.9;
+#X obj 925 811 change;
+#X obj 925 786 < 0.9;
+#X obj 999 811 change;
+#X obj 999 786 < 0.9;
+#X obj 582 764 r sen8;
+#X obj 662 762 r sen9;
+#X obj 732 762 r sen10;
+#X obj 802 762 r sen11;
+#X obj 871 762 r sen12;
+#X obj 952 762 r sen13;
+#X obj 1026 762 r sen14;
+#X obj 1069 811 change;
+#X obj 1069 786 < 0.9;
+#X obj 1139 811 change;
+#X obj 1139 786 < 0.9;
+#X obj 1096 762 r sen15;
+#X obj 1166 762 r sen16;
+#X obj 555 837 s sensor8;
+#X obj 635 835 s sensor9;
+#X obj 705 835 s sensor10;
+#X obj 775 835 s sensor11;
+#X obj 845 835 s sensor12;
+#X obj 925 835 s sensor13;
+#X obj 999 835 s sensor14;
+#X obj 1069 835 s sensor15;
+#X obj 1139 835 s sensor16;
+#X floatatom 85 695 5 0 0 0 - - -;
+#X connect 2 0 21 0;
+#X connect 3 0 2 0;
+#X connect 3 1 5 0;
+#X connect 5 0 21 0;
+#X connect 6 0 11 1;
+#X connect 7 0 21 0;
+#X connect 8 0 7 0;
+#X connect 9 0 21 0;
+#X connect 10 0 21 0;
+#X connect 11 0 16 0;
+#X connect 12 0 21 0;
+#X connect 13 0 21 0;
+#X connect 14 0 13 0;
+#X connect 16 0 34 0;
+#X connect 17 0 39 0;
+#X connect 17 0 102 0;
+#X connect 17 1 43 0;
+#X connect 17 2 45 0;
+#X connect 17 3 47 0;
+#X connect 17 4 49 0;
+#X connect 17 5 51 0;
+#X connect 17 6 53 0;
+#X connect 17 7 67 0;
+#X connect 19 0 22 0;
+#X connect 21 0 11 0;
+#X connect 21 1 26 0;
+#X connect 23 0 21 0;
+#X connect 24 0 21 0;
+#X connect 26 0 19 0;
+#X connect 29 0 12 0;
+#X connect 34 0 17 0;
+#X connect 34 1 17 1;
+#X connect 34 2 17 2;
+#X connect 34 3 17 3;
+#X connect 34 4 17 4;
+#X connect 34 5 17 5;
+#X connect 34 6 17 6;
+#X connect 34 7 17 7;
+#X connect 34 8 35 0;
+#X connect 35 0 36 0;
+#X connect 35 1 36 1;
+#X connect 35 2 36 2;
+#X connect 35 3 36 3;
+#X connect 35 4 36 4;
+#X connect 35 5 36 5;
+#X connect 35 6 36 6;
+#X connect 35 7 36 7;
+#X connect 36 0 69 0;
+#X connect 36 1 71 0;
+#X connect 36 2 73 0;
+#X connect 36 3 75 0;
+#X connect 36 4 77 0;
+#X connect 36 5 79 0;
+#X connect 36 6 88 0;
+#X connect 36 7 90 0;
+#X connect 38 0 40 0;
+#X connect 39 0 38 0;
+#X connect 41 0 39 1;
+#X connect 42 0 57 0;
+#X connect 43 0 42 0;
+#X connect 44 0 58 0;
+#X connect 45 0 44 0;
+#X connect 46 0 59 0;
+#X connect 47 0 46 0;
+#X connect 48 0 60 0;
+#X connect 49 0 48 0;
+#X connect 50 0 61 0;
+#X connect 51 0 50 0;
+#X connect 52 0 62 0;
+#X connect 53 0 52 0;
+#X connect 54 0 43 1;
+#X connect 55 0 45 1;
+#X connect 56 0 47 1;
+#X connect 63 0 49 1;
+#X connect 64 0 51 1;
+#X connect 65 0 53 1;
+#X connect 66 0 93 0;
+#X connect 67 0 66 0;
+#X connect 68 0 94 0;
+#X connect 69 0 68 0;
+#X connect 70 0 95 0;
+#X connect 71 0 70 0;
+#X connect 72 0 96 0;
+#X connect 73 0 72 0;
+#X connect 74 0 97 0;
+#X connect 75 0 74 0;
+#X connect 76 0 98 0;
+#X connect 77 0 76 0;
+#X connect 78 0 99 0;
+#X connect 79 0 78 0;
+#X connect 80 0 67 1;
+#X connect 81 0 69 1;
+#X connect 82 0 71 1;
+#X connect 83 0 73 1;
+#X connect 84 0 75 1;
+#X connect 85 0 77 1;
+#X connect 86 0 79 1;
+#X connect 87 0 100 0;
+#X connect 88 0 87 0;
+#X connect 89 0 101 0;
+#X connect 90 0 89 0;
+#X connect 91 0 88 1;
+#X connect 92 0 90 1;
+#X restore -418 -541 pd arduino;
+#X floatatom -420 -492 5 0 0 0 - - -;
+#X obj -420 -516 r arduino5;
+#X obj -208 -273 cnv 15 180 140 empty empty Renderizador 20 12 0 14
+-191407 -66577 0;
+#X obj -157 -207 tgl 15 0 lv11 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -141 -207 tgl 15 0 lv12 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -125 -207 tgl 15 0 lv13 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -109 -207 tgl 15 0 lv14 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -157 -191 tgl 15 0 lv21 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -141 -191 tgl 15 0 lv22 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -125 -191 tgl 15 0 lv23 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -109 -191 tgl 15 0 lv24 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -157 -175 tgl 15 0 lv31 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -141 -175 tgl 15 0 lv32 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -125 -175 tgl 15 0 lv33 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -109 -175 tgl 15 0 lv34 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -157 -159 tgl 15 0 lv41 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -141 -159 tgl 15 0 lv42 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -125 -159 tgl 15 0 lv43 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -109 -159 tgl 15 0 lv44 todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -133 -237 tgl 15 0 todos empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -209 -424 cnv 15 180 150 empty empty Pos_Vertical 20 12 0 14
+-233017 -66577 0;
+#X obj -175 -388 vsl 15 100 -5 5 0 1 y1 empty empty 0 -9 0 10 -262144
+-258113 -1 7100 1;
+#X obj -209 -534 cnv 15 180 110 empty empty Pos_Horizontal 20 12 0
+14 -233017 -66577 0;
+#X obj -168 -504 hsl 100 15 -5 5 0 1 x1 empty empty -13 8 0 10 -262144
+-258113 -1 1900 1;
+#X obj -28 -534 cnv 15 170 401 empty empty Sensibilidade 20 12 0 14
+-128992 -66577 0;
+#X obj -3 -500 vsl 15 64 0 1 0 1 sen1 empty empty 0 -9 0 10 -262144
+-4160 -1 2800 1;
+#X obj 27 -500 vsl 15 64 0 1 0 1 sen2 empty empty 0 -9 0 10 -262144
+-4160 -1 2100 1;
+#X obj 57 -500 vsl 15 64 0 1 0 1 sen3 empty empty 0 -9 0 10 -262144
+-4160 -1 2500 1;
+#X obj 87 -500 vsl 15 64 0 1 0 1 sen4 empty empty 0 -9 0 10 -262144
+-4160 -1 2400 1;
+#X obj -3 -410 vsl 15 64 0 1 0 1 sen5 empty empty 0 -9 0 10 -262144
+-4160 -1 2500 1;
+#X obj 27 -410 vsl 15 64 0 1 0 1 sen6 empty empty 0 -9 0 10 -262144
+-4160 -1 2400 1;
+#X obj 57 -410 vsl 15 64 0 1 0 1 sen7 empty empty 0 -9 0 10 -262144
+-4160 -1 2800 1;
+#X obj 87 -410 vsl 15 64 0 1 0 1 sen8 empty empty 0 -9 0 10 -262144
+-4160 -1 2600 1;
+#X obj -3 -320 vsl 15 64 0 1 0 1 sen9 empty empty 0 -9 0 10 -262144
+-4160 -1 2400 1;
+#X obj 27 -320 vsl 15 64 0 1 0 1 sen10 empty empty 0 -9 0 10 -262144
+-4160 -1 1800 1;
+#X obj 57 -320 vsl 15 64 0 1 0 1 sen11 empty empty 0 -9 0 10 -262144
+-4160 -1 2500 1;
+#X obj 87 -320 vsl 15 64 0 1 0 1 sen12 empty empty 0 -9 0 10 -262144
+-4160 -1 2600 1;
+#X obj -3 -230 vsl 15 64 0 1 0 1 sen13 empty empty 0 -9 0 10 -262144
+-4160 -1 1800 1;
+#X obj 27 -230 vsl 15 64 0 1 0 1 sen14 empty empty 0 -9 0 10 -262144
+-4160 -1 1900 1;
+#X obj 57 -230 vsl 15 64 0 1 0 1 sen15 empty empty 0 -9 0 10 -262144
+-4160 -1 2400 1;
+#X obj 87 -230 vsl 15 64 0 1 0 1 sen16 empty empty 0 -9 0 10 -262144
+-4160 -1 2100 1;
+#X obj -168 -484 hsl 100 15 -5 5 0 1 x2 empty empty -13 8 0 10 -262144
+-258113 -1 3800 1;
+#X obj -168 -464 hsl 100 15 -5 5 0 1 x3 empty empty -13 8 0 10 -262144
+-258113 -1 5800 1;
+#X obj -168 -444 hsl 100 15 -5 5 0 1 x4 empty empty -13 8 0 10 -262144
+-258113 -1 7700 1;
+#X obj -159 -237 tgl 15 0 play todos empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -145 -388 vsl 15 100 -5 5 0 1 y2 empty empty 0 -9 0 10 -262144
+-258113 -1 5600 1;
+#X obj -115 -388 vsl 15 100 -5 5 0 1 y3 empty empty 0 -9 0 10 -262144
+-258113 -1 4100 1;
+#X obj -85 -388 vsl 15 100 -5 5 0 1 y4 empty empty 0 -9 0 10 -262144
+-258113 -1 2700 1;
+#X obj -208 -133 cnv 15 350 100 empty empty Tamanho 20 12 0 14 -233017
+-66577 0;
+#X obj -183 -105 hsl 300 15 0 2 0 1 sizeX empty X -16 8 0 10 -262144
+-1 -1 13700 1;
+#X obj -183 -75 hsl 300 15 0 2 0 1 sizeY empty Y -16 8 0 10 -262144
+-1 -1 10200 1;
+#N canvas 354 332 761 604 control_room 0;
+#N canvas 474 272 406 290 video11 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -16 rectangle 1 1;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 541 189 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -298 307 list2symbol;
+#X obj -189 209 folder_list ./REVERBERO/*;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 10 0;
+#X connect 3 0 9 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 7 0;
+#X connect 10 0 5 0;
+#X restore -143 -161 pd select-vid;
+#X obj -157 -59 r sizeX;
+#X obj -119 -38 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 6 0 5 0;
+#X connect 7 0 3 0;
+#X connect 8 0 6 1;
+#X connect 9 0 6 2;
+#X connect 10 0 11 0;
+#X connect 11 0 2 0;
+#X connect 12 0 5 1;
+#X connect 13 0 5 2;
+#X restore -483 -290 pd video11;
+#X obj -483 -314 tgl 15 0 empty lv11 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -445 -314 r x1;
+#X obj -464 -314 tgl 15 0 empty sensor1 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -416 -314 r y1;
+#X obj -377 -313 tgl 15 0 empty lv12 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -358 -313 tgl 15 0 empty sensor2 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -310 -313 r y1;
+#X obj -263 -313 tgl 15 0 empty lv13 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -244 -313 tgl 15 0 empty sensor3 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -196 -313 r y1;
+#X obj -153 -313 tgl 15 0 empty lv14 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -134 -313 tgl 15 0 empty sensor4 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -86 -313 r y1;
+#X obj -225 -313 r x3;
+#X obj -115 -313 r x4;
+#X obj -483 -264 tgl 15 0 empty lv21 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -445 -264 r x1;
+#X obj -464 -264 tgl 15 0 empty sensor5 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -377 -263 tgl 15 0 empty lv22 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -358 -263 tgl 15 0 empty sensor6 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -263 -263 tgl 15 0 empty lv23 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -244 -263 tgl 15 0 empty sensor7 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -153 -263 tgl 15 0 empty lv24 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -134 -263 tgl 15 0 empty sensor8 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -339 -263 r x2;
+#X obj -225 -263 r x3;
+#X obj -115 -263 r x4;
+#X obj -483 -214 tgl 15 0 empty lv31 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -445 -214 r x1;
+#X obj -464 -214 tgl 15 0 empty sensor9 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -377 -213 tgl 15 0 empty lv32 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -358 -213 tgl 15 0 empty sensor10 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -263 -213 tgl 15 0 empty lv33 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -244 -213 tgl 15 0 empty sensor11 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -153 -213 tgl 15 0 empty lv34 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -134 -213 tgl 15 0 empty sensor12 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -339 -213 r x2;
+#X obj -225 -213 r x3;
+#X obj -115 -213 r x4;
+#X obj -483 -164 tgl 15 0 empty lv41 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -445 -164 r x1;
+#X obj -464 -164 tgl 15 0 empty sensor13 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -377 -163 tgl 15 0 empty lv42 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -358 -163 tgl 15 0 empty sensor14 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -263 -163 tgl 15 0 empty lv43 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -244 -163 tgl 15 0 empty sensor15 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -153 -163 tgl 15 0 empty lv44 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj -134 -163 tgl 15 0 empty sensor16 empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj -339 -163 r x2;
+#X obj -225 -163 r x3;
+#X obj -115 -163 r x4;
+#N canvas 470 184 406 290 video12 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -8 rectangle 1 1;
+#X obj -157 -51 r sizeX;
+#X obj -119 -30 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -377 -289 pd video12;
+#N canvas 470 184 406 290 video13 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -16 rectangle 1 1;
+#X obj -157 -59 r sizeX;
+#X obj -119 -38 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -263 -289 pd video13;
+#N canvas 470 184 406 290 video14 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -13 rectangle 1 1;
+#X obj -157 -56 r sizeX;
+#X obj -119 -35 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -153 -289 pd video14;
+#N canvas 470 184 406 290 video21 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -20 rectangle 1 1;
+#X obj -157 -63 r sizeX;
+#X obj -119 -42 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -483 -240 pd video21;
+#N canvas 470 184 406 290 video22 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -10 rectangle 1 1;
+#X obj -157 -53 r sizeX;
+#X obj -119 -32 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -377 -239 pd video22;
+#X obj -416 -264 r y2;
+#X obj -416 -214 r y3;
+#X obj -416 -164 r y4;
+#X obj -310 -263 r y2;
+#X obj -310 -213 r y3;
+#X obj -310 -163 r y4;
+#X obj -196 -263 r y2;
+#X obj -86 -263 r y2;
+#X obj -196 -213 r y3;
+#X obj -86 -213 r y3;
+#X obj -196 -163 r y4;
+#X obj -86 -163 r y4;
+#X obj -339 -313 r x2;
+#N canvas 470 184 406 290 video23 0;
+#X obj -292 -156 inlet;
+#X obj -292 -134 gemhead;
+#X msg -241 -135 open \$1;
+#X msg -149 -135 auto \$1;
+#X obj -292 -103 pix_movie;
+#X obj -292 -80 translateXYZ -2 2 1;
+#X obj -149 -158 r play;
+#X obj -229 -103 inlet;
+#X obj -192 -103 inlet;
+#X obj -241 -181 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -241 -158 pd select-vid;
+#X obj -292 -20 rectangle 1 1;
+#X obj -255 -63 r sizeX;
+#X obj -217 -42 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -263 -239 pd video23;
+#N canvas 470 184 406 290 video24 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -11 rectangle 1 1;
+#X obj -157 -54 r sizeX;
+#X obj -119 -33 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -153 -239 pd video24;
+#N canvas 470 184 406 290 video31 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -22 rectangle 1 1;
+#X obj -157 -65 r sizeX;
+#X obj -119 -44 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -483 -190 pd video31;
+#N canvas 470 184 406 290 video32 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -7 rectangle 1 1;
+#X obj -157 -50 r sizeX;
+#X obj -119 -29 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -377 -189 pd video32;
+#N canvas 470 184 406 290 video33 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -15 rectangle 1 1;
+#X obj -157 -58 r sizeX;
+#X obj -119 -37 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -263 -189 pd video33;
+#N canvas 470 184 406 290 video34 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -14 rectangle 1 1;
+#X obj -157 -57 r sizeX;
+#X obj -119 -36 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -153 -189 pd video34;
+#N canvas 470 184 406 290 video41 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -4 rectangle 1 1;
+#X obj -157 -47 r sizeX;
+#X obj -119 -26 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -483 -140 pd video41;
+#N canvas 470 184 406 290 video42 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -10 rectangle 1 1;
+#X obj -157 -53 r sizeX;
+#X obj -119 -32 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -377 -139 pd video42;
+#N canvas 470 184 406 290 video43 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -18 rectangle 1 1;
+#X obj -157 -61 r sizeX;
+#X obj -119 -40 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -263 -139 pd video43;
+#N canvas 470 184 406 290 video44 0;
+#X obj -194 -159 inlet;
+#X obj -194 -137 gemhead;
+#X msg -143 -138 open \$1;
+#X msg -51 -138 auto \$1;
+#X obj -194 -106 pix_movie;
+#X obj -194 -83 translateXYZ -2 2 1;
+#X obj -51 -161 r play;
+#X obj -131 -106 inlet;
+#X obj -94 -106 inlet;
+#X obj -143 -184 inlet;
+#N canvas 351 37 541 531 select-vid 0;
+#X obj -326 227 select 0 1;
+#X obj -326 199 inlet;
+#X obj -189 172 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 286 list-dripslow;
+#X obj -298 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -189 269 list-extend;
+#X obj -127 242 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -298 331 outlet;
+#X obj -189 147 loadbang;
+#X obj -189 209 folder_list ./REVERBERO/*.mov;
+#X obj -298 307 list2symbol;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 10 0;
+#X connect 3 1 2 0;
+#X connect 3 1 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 6 0 5 1;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X restore -143 -161 pd select-vid;
+#X obj -194 -16 rectangle 1 1;
+#X obj -157 -59 r sizeX;
+#X obj -119 -38 r sizeY;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 6 0 3 0;
+#X connect 7 0 5 1;
+#X connect 8 0 5 2;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 11 2;
+#X restore -153 -139 pd video44;
+#X connect 1 0 0 0;
+#X connect 2 0 0 2;
+#X connect 3 0 0 1;
+#X connect 4 0 0 3;
+#X connect 5 0 52 0;
+#X connect 6 0 52 1;
+#X connect 7 0 52 3;
+#X connect 8 0 53 0;
+#X connect 9 0 53 1;
+#X connect 10 0 53 3;
+#X connect 11 0 54 0;
+#X connect 12 0 54 1;
+#X connect 13 0 54 3;
+#X connect 14 0 53 2;
+#X connect 15 0 54 2;
+#X connect 16 0 55 0;
+#X connect 17 0 55 2;
+#X connect 18 0 55 1;
+#X connect 19 0 56 0;
+#X connect 20 0 56 1;
+#X connect 21 0 70 0;
+#X connect 22 0 70 1;
+#X connect 23 0 71 0;
+#X connect 24 0 71 1;
+#X connect 25 0 56 2;
+#X connect 26 0 70 2;
+#X connect 27 0 71 2;
+#X connect 28 0 72 0;
+#X connect 29 0 72 2;
+#X connect 30 0 72 1;
+#X connect 31 0 73 0;
+#X connect 32 0 73 1;
+#X connect 33 0 74 0;
+#X connect 34 0 74 1;
+#X connect 35 0 75 0;
+#X connect 36 0 75 1;
+#X connect 37 0 73 2;
+#X connect 38 0 74 2;
+#X connect 39 0 75 2;
+#X connect 40 0 76 0;
+#X connect 41 0 76 2;
+#X connect 42 0 76 1;
+#X connect 43 0 77 0;
+#X connect 44 0 77 1;
+#X connect 45 0 78 0;
+#X connect 46 0 78 1;
+#X connect 47 0 79 0;
+#X connect 48 0 79 1;
+#X connect 49 0 77 2;
+#X connect 50 0 78 2;
+#X connect 51 0 79 2;
+#X connect 57 0 55 3;
+#X connect 58 0 72 3;
+#X connect 59 0 76 3;
+#X connect 60 0 56 3;
+#X connect 61 0 73 3;
+#X connect 62 0 77 3;
+#X connect 63 0 70 3;
+#X connect 64 0 71 3;
+#X connect 65 0 74 3;
+#X connect 66 0 75 3;
+#X connect 67 0 78 3;
+#X connect 68 0 79 3;
+#X connect 69 0 52 2;
+#X restore -541 -540 pd control_room;
+#X obj 268 -183 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 252 -237 r sensor5;
+#N canvas 1 51 429 300 teste_sensores 0;
+#X obj 141 -173 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 139 -200 r sensor1;
+#X obj 211 -173 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 281 -173 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 351 -173 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 141 -122 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 211 -122 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 281 -122 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 351 -122 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 141 -72 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 211 -72 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 281 -72 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 351 -72 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 141 -22 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 211 -22 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 281 -22 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 351 -22 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 209 -200 r sensor2;
+#X obj 279 -200 r sensor3;
+#X obj 349 -200 r sensor4;
+#X obj 139 -149 r sensor5;
+#X obj 209 -149 r sensor6;
+#X obj 279 -149 r sensor7;
+#X obj 349 -149 r sensor8;
+#X obj 139 -99 r sensor9;
+#X obj 209 -100 r sensor10;
+#X obj 279 -99 r sensor11;
+#X obj 349 -99 r sensor12;
+#X obj 139 -49 r sensor13;
+#X obj 209 -49 r sensor14;
+#X obj 279 -49 r sensor15;
+#X obj 348 -49 r sensor16;
+#X connect 1 0 0 0;
+#X connect 17 0 2 0;
+#X connect 18 0 3 0;
+#X connect 19 0 4 0;
+#X connect 20 0 5 0;
+#X connect 21 0 6 0;
+#X connect 22 0 7 0;
+#X connect 23 0 8 0;
+#X connect 24 0 9 0;
+#X connect 25 0 10 0;
+#X connect 26 0 11 0;
+#X connect 27 0 12 0;
+#X connect 28 0 13 0;
+#X connect 29 0 14 0;
+#X connect 30 0 15 0;
+#X connect 31 0 16 0;
+#X restore 296 -313 pd teste_sensores;
+#X connect 2 0 1 0;
+#X connect 54 0 53 0;
+#X restore -336 -212 pd interface_videos;
+#X obj -131 -230 cnv 15 400 500 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X text -88 -206 Lista de objetos interessantes;
+#X obj -86 -174 folder_list;
+#X text -81 90 Problemas atuais: Arduino? Tocar Video preto \, ou usar
+imagem preta? Configurar tamanho da tela e proporcao dos videos?;
+#X connect 0 0 1 0;
